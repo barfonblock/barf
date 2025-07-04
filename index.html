@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>$BARF - Barf on Block</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .gradient-text {
+      background: linear-gradient(90deg, #00ffa3, #dc1fff, #9945ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+    }
+    .gradient-button {
+      background: linear-gradient(90deg, #00ffa3, #dc1fff, #9945ff);
+      color: black;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .gradient-button:hover {
+      filter: brightness(1.2);
+    }
+    p, a {
+      text-shadow: 0 0 5px rgba(0,255,163,0.3), 0 0 10px rgba(220,31,255,0.2);
+    }
+    .typing-bg {
+      position: fixed;
+      top: 25%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: clamp(1.5rem, 6vw, 3rem);
+      color: #00ffa3;
+      text-shadow: 0 0 10px rgba(0,255,163,0.5);
+      pointer-events: none;
+      white-space: nowrap;
+      z-index: 0;
+    }
+  </style>
+</head>
+<body class="bg-gray-950 text-gray-100 font-sans flex items-center justify-center min-h-screen p-6">
+  <div class="typing-bg" id="typingBackground"></div>
+  <div class="max-w-xl w-full text-center space-y-8 z-10 relative">
+    <p class="text-lg sm:text-xl font-semibold">
+      <span class="gradient-text">$BARF</span><span class="gradient-text">ing ON THE SOLANA BLOCKCHAIN 1 MILLION TIMES</span>
+    </p>
+    <div class="flex flex-col sm:flex-row justify-center gap-4">
+      <a href="https://pump.fun" target="_blank" class="gradient-button py-3 px-8 rounded-full transition-transform transform hover:scale-105">Buy $BARF</a>
+      <a href="https://x.com/barfonblock" target="_blank" class="gradient-button py-3 px-8 rounded-full transition-transform transform hover:scale-105">Twitter</a>
+      <a href="https://explorer.solana.com/address/FLjRKWRX5HCWH51QSr7MzUDPB5tdgJApqnCFh28Reg2B" target="_blank" class="gradient-button py-3 px-8 rounded-full transition-transform transform hover:scale-105">See Receipts</a>
+    </div>
+    <p class="text-xs text-gray-500">© 2025 Barf on Block</p>
+  </div>
+
+  <script>
+    const textElement = document.getElementById('typingBackground');
+    const words = "EVERY FIVE SECONDS OUR SCRIPT IS VOMITING $BARF ON THE BLOCKCHAIN UNTIL IT HITS 1 MILLION $BARFs".split(" ");
+    let index = 0;
+
+    function typeWord() {
+      textElement.textContent += (index === 0 ? "" : " ") + words[index];
+      index = (index + 1) % words.length;
+    }
+
+    typeWord();
+    setInterval(typeWord, 5000);
+  </script>
+</body>
+</html>
