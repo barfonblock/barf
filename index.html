@@ -3,68 +3,77 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>$BARF - Barf on Block</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <title>$BARF Counter</title>
   <style>
-    .gradient-text {
-      background: linear-gradient(90deg, #00ffa3, #dc1fff, #9945ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-weight: 700;
+    body {
+      background: #0d0d0d;
+      color: #00ff88;
+      font-family: 'Arial Black', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
     }
-    .gradient-button {
-      background: linear-gradient(90deg, #00ffa3, #dc1fff, #9945ff);
-      color: black;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
+    h1 {
+      font-size: 5rem;
+      letter-spacing: 2px;
+      margin-bottom: 2rem;
     }
-    .gradient-button:hover {
-      filter: brightness(1.2);
+    .buttons {
+      display: flex;
+      gap: 1.5rem;
     }
-    p, a {
-      text-shadow: 0 0 5px rgba(0,255,163,0.3), 0 0 10px rgba(220,31,255,0.2);
+    a.button {
+      text-decoration: none;
+      color: #0d0d0d;
+      background: #00ff88;
+      padding: 1rem 2rem;
+      font-size: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #00ff88;
+      transition: all 0.2s ease;
     }
-    .typing-bg {
-      position: fixed;
-      top: 25%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: clamp(1.5rem, 6vw, 3rem);
-      color: #00ffa3;
-      text-shadow: 0 0 10px rgba(0,255,163,0.5);
-      pointer-events: none;
-      white-space: nowrap;
-      z-index: 0;
+    a.button:hover {
+      background: #0d0d0d;
+      color: #00ff88;
+      box-shadow: 0 0 30px #00ff88;
+      border: 2px solid #00ff88;
+    }
+    span#counter {
+      margin-right: 1rem;
     }
   </style>
 </head>
-<body class="bg-gray-950 text-gray-100 font-sans flex items-center justify-center min-h-screen p-6">
-  <div class="typing-bg" id="typingBackground"></div>
-  <div class="max-w-xl w-full text-center space-y-8 z-10 relative">
-    <p class="text-lg sm:text-xl font-semibold">
-      <span class="gradient-text">$BARF</span><span class="gradient-text">ing ON THE SOLANA BLOCKCHAIN 1 MILLION TIMES</span>
-    </p>
-    <div class="flex flex-col sm:flex-row justify-center gap-4">
-      <a href="https://pump.fun" target="_blank" class="gradient-button py-3 px-8 rounded-full transition-transform transform hover:scale-105">Buy $BARF</a>
-      <a href="https://x.com/barfonblock" target="_blank" class="gradient-button py-3 px-8 rounded-full transition-transform transform hover:scale-105">Twitter</a>
-      <a href="https://explorer.solana.com/address/FLjRKWRX5HCWH51QSr7MzUDPB5tdgJApqnCFh28Reg2B" target="_blank" class="gradient-button py-3 px-8 rounded-full transition-transform transform hover:scale-105">See Receipts</a>
-    </div>
-    <p class="text-xs text-gray-500">© 2025 Barf on Block</p>
+<body>
+  <h1><span id="counter">0</span> $BARF</h1>
+  <div class="buttons">
+    <a class="button" href="https://pump.fun/coin/2Wz54SKrNAW3coWh6FGVexban63spnv46A2Uhut2pump" target="_blank">BUY $BARF</a>
+    <a class="button" href="https://explorer.solana.com/address/FLjRKWRX5HCWH51QSr7MzUDPB5tdgJApqnCFh28Reg2B" target="_blank">SEE RECEIPTS</a>
+    <a class="button" href="https://x.com/barfonblock" target="_blank">TWITTER</a>
   </div>
 
   <script>
-    const textElement = document.getElementById('typingBackground');
-    const words = "EVERY FIVE SECONDS OUR SCRIPT IS VOMITING $BARF ON THE BLOCKCHAIN UNTIL IT HITS 1 MILLION $BARFs".split(" ");
-    let index = 0;
+    // === CONFIGURATION ===
+    const incrementIntervalMs = 5000; // 5 seconds
+    const maxCount = 1000000;
 
-    function typeWord() {
-      textElement.textContent += (index === 0 ? "" : " ") + words[index];
-      index = (index + 1) % words.length;
+    // start globally at ~65,100
+    const incrementsSoFar = 100000;
+    const startTimestamp = Date.now() - (incrementsSoFar * incrementIntervalMs);
+
+    const counterElem = document.getElementById("counter");
+
+    function updateCounter() {
+      const now = Date.now();
+      let count = Math.floor((now - startTimestamp) / incrementIntervalMs);
+      if (count > maxCount) count = maxCount;
+      counterElem.textContent = count.toLocaleString();
     }
 
-    typeWord();
-    setInterval(typeWord, 5000);
+    updateCounter();
+    setInterval(updateCounter, 5000);
   </script>
 </body>
 </html>
