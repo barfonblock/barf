@@ -5,46 +5,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>$BARF Counter</title>
   <style>
-    body {
-      background: #0d0d0d;
-      color: #00ff88;
-      font-family: 'Arial Black', sans-serif;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-    h1 {
-      font-size: 5rem;
-      letter-spacing: 2px;
-      margin-bottom: 2rem;
-    }
-    .buttons {
-      display: flex;
-      gap: 1.5rem;
-    }
-    a.button {
-      text-decoration: none;
-      color: #0d0d0d;
-      background: #00ff88;
-      padding: 1rem 2rem;
-      font-size: 1.5rem;
-      border-radius: 10px;
-      box-shadow: 0 0 20px #00ff88;
-      transition: all 0.2s ease;
-    }
-    a.button:hover {
-      background: #0d0d0d;
-      color: #00ff88;
-      box-shadow: 0 0 30px #00ff88;
-      border: 2px solid #00ff88;
-    }
-    span#counter {
-      margin-right: 1rem;
-    }
-  </style>
+  body {
+    background: #0d0d0d;
+    color: #00ff88;
+    font-family: 'Arial Black', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  h1 {
+    font-size: 5rem;
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
+  }
+  .buttons {
+    display: flex;
+    flex-direction: column; /* <-- align vertically */
+    align-items: center;    /* <-- center horizontally */
+    gap: 1rem;
+  }
+  a.button {
+    text-decoration: none;
+    color: #0d0d0d;
+    background: #00ff88;
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #00ff88;
+    transition: all 0.2s ease;
+  }
+  a.button:hover {
+    background: #0d0d0d;
+    color: #00ff88;
+    box-shadow: 0 0 30px #00ff88;
+    border: 2px solid #00ff88;
+  }
+  span#counter {
+    margin-right: 1rem;
+  }
+</style>
 </head>
 <body>
   <h1><span id="counter">0</span> $BARF</h1>
