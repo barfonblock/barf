@@ -55,13 +55,11 @@
   </div>
 
   <script>
-    // === CONFIGURATION ===
     const incrementIntervalMs = 5000; // 5 seconds
     const maxCount = 1000000;
 
-    // Hardcoded UTC start time to align globally
-    // For example, let's say it should have started at 100,000 counts ago (about 5 days 19 hours ago from now)
-    const startTimestamp = new Date("2025-07-03T05:00:00Z").getTime();
+    // Precisely calculated UTC start to show ~65,200 right now
+    const startTimestamp = new Date("2025-07-05T07:34:39Z").getTime();
 
     const counterElem = document.getElementById("counter");
 
